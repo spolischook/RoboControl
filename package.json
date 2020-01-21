@@ -1,0 +1,27 @@
+{
+  "name": "car-drive",
+  "version": "1.0.0",
+  "description": "Simple websocket solution for control robot car",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "./node_modules/.bin/tsc && node ./dist/server/server.js"
+  },
+  "author": {
+    "name": "Serhii Polishchuk",
+    "email": "spolischook@gmail.com",
+    "url": "https://kotoblog.pp.ua"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.28.2",
+    "@types/express": "^4.17.2",
+    "@types/ws": "^7.2.0",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "nipplejs": "^0.8.4",
+    "typescript": "^3.7.5",
+    "ws": "^7.2.1"
+  }
+}

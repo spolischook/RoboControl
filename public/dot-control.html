@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>RoboCar Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5">
+    <style>
+        html, body {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        #left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            background: rgba(0, 255, 0, 0.1);
+        }
+
+        #right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            background: rgba(0, 0, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div id="left">
+    <div id="zone_joystick">
+        <div id="debug">
+            <ul>
+                <li class="position">
+                    position :
+                    <ul>
+                        <li class="x">x : <span class='data'></span></li>
+                        <li class="y">y : <span class='data'></span></li>
+                    </ul>
+                </li>
+                <li class="force">force : <span class='data'></span></li>
+                <li class="pressure">pressure : <span class='data'></span></li>
+                <li class="distance">distance : <span class='data'></span></li>
+                <li class="angle">
+                    angle :
+                    <ul>
+                        <li class="radian">radian : <span class='data'></span></li>
+                        <li class="degree">degree : <span class='data'></span></li>
+                    </ul>
+                </li>
+                <li class="direction">
+                    direction :
+                    <ul>
+                        <li class="x">x : <span class='data'></span></li>
+                        <li class="y">y : <span class='data'></span></li>
+                        <li class="angle">angle : <span class='data'></span></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="dump"></div>
+        </div>
+    </div>
+</div>
+<div id="right"></div>
+<script src="build/runtime.js"></script>
+<script src="build/dot-control.js"></script>
+</body>
+</html>
