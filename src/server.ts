@@ -1,13 +1,23 @@
 import * as express from 'express';
 import * as http from 'http';
+import * as https from 'https';
 import * as WebSocket from 'ws';
 import {AddressInfo} from "net";
 import {JoystickOutputData} from 'nipplejs';
+import fs = require('fs');
 
 const app = express();
+let server: http.Server | https.Server;
 
 //initialize a simple http server
-const server = http.createServer(app);
+if (process.env.NODE_ENV === 'production') {
+    const privateKey = fs.readFileSync(process.env.PRIVATE_KEY || '', 'utf8');
+    const certificate = fs.readFileSync(process.env.CERT || '', 'utf8');
+    const credentials = { key: privateKey, cert: certificate };
+    server = https.createServer(credentials, app);
+} else {
+    server = http.createServer(app);
+}
 
 //initialize the WebSocket server instance
 const wss = new WebSocket.Server({ server });

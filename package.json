@@ -21,7 +21,9 @@
     "express": "^4.17.1",
     "jquery": "^3.4.1",
     "nipplejs": "^0.8.4",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
+    "webpack-node-externals": "^1.7.2",
     "ws": "^7.2.1"
   }
 }
