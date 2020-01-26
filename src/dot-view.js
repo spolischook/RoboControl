@@ -9,7 +9,7 @@ let movingData = {
     f: 0
 };
 function connect() {
-    socket = new WebSocket('ws://localhost:8999');
+    socket = new WebSocket(process.env.WS_SERVER || 'ws://localhost:8999');
     socket.onclose = function(e) {
         setTimeout(function() {
             connect();
