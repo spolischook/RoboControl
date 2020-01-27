@@ -2,6 +2,7 @@
 
 import $ from 'jquery';
 
+const margin = 5;
 let socket;
 let movingData = {
     x: 0,
@@ -39,11 +40,9 @@ var canvasHeight = canvas.height();
 canvas.attr({height: canvasHeight, width: canvasWidth});
 
 var dot = {
-    x: 50,
-    y: 50,
-    radius: 25,
-    xMove: '+', // xMove and yMove tell us which direction to move the dot
-    yMove: '+'
+    x: 10,
+    y: 10,
+    radius: 50
 };
 
 drawDot(dot);
@@ -63,23 +62,23 @@ function moveDot() {
     dot.x += movingData.x*movingData.f;
     dot.y += -movingData.y*movingData.f;
 
-    // Draw the dot in its new position.
-    drawDot(dot);
-
     // If we hit a boundary in some direction, we reverse the movement in the
     // direction that caused the collision.
     if( (dot.x + dot.radius) >= canvasWidth ) {
-        dot.x = canvasWidth-dot.radius;
+        dot.x = margin;
     }
-    if( (dot.x - dot.radius) <= 0 ) {
-        dot.x = dot.radius;
+    if( (dot.x - margin) <= 0 ) {
+        dot.x = margin;
     }
-    if( (dot.y + dot.radius) >= canvasHeight ) {
-        dot.y = canvasHeight-dot.radius;
+    if( (dot.y + margin) >= canvasHeight ) {
+        dot.y = margin;
     }
-    if( (dot.y - dot.radius) <= 0 ) {
-        dot.y = dot.radius;
+    if( (dot.y - margin) <= 0 ) {
+        dot.y = margin;
     }
+
+    // Draw the dot in its new position.
+    drawDot(dot);
 
     // Render it again
     window.requestAnimationFrame(moveDot);
@@ -87,7 +86,8 @@ function moveDot() {
 
 function drawDot(dot) {
     context.beginPath();
-    context.arc(dot.x, dot.y, dot.radius, 0, 2 * Math.PI, false);
+    // context.arc(dot.x, dot.y, dot.radius, 0, 2 * Math.PI, false);
+    context.rect(dot.x, dot.y, dot.radius, dot.radius);
     context.fillStyle = '#F03C69';
     context.fill();
 }
