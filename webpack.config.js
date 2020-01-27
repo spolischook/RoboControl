@@ -18,8 +18,8 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('test-joystick', './src/test-joystick.js')
-    .addEntry('dot-control', './src/dot-control.js')
-    .addEntry('dot-view', './src/dot-view.js')
+    .addEntry('dot-control', './src/dot/dot-control.js')
+    .addEntry('dot-view', './src/dot/dot-view.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
