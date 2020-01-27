@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
     entry: './src/server.ts',
     mode: 'development',
+    devtool: 'inline-source-map',
     target: 'node',
     node: {
         // Need this when working with express, otherwise the build fails
