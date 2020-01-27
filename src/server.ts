@@ -37,9 +37,6 @@ wss.on('connection', (ws: WebSocket) => {
                 }
             });
     });
-
-    //send immediatly a feedback to the incoming connection
-    ws.send('Hi there, I am a WebSocket server');
 });
 
 //start our server
