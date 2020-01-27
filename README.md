@@ -37,5 +37,11 @@ Compile frontend:
 ./node_modules/.bin/encore dev
 ```
 
+or even define vars to configure at compile time:
+```bash
+./node_modules/.bin/encore dev 
+    --define process.env.WS_SERVER='"wss://robo-dot.akit.pp.ua:8999"'
+```
+
 To work continuously with project 
 add `--watch` parameter
