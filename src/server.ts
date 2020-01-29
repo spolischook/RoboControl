@@ -7,6 +7,10 @@ import {JoystickOutputData} from 'nipplejs';
 import fs = require('fs');
 
 const app = express();
+
+app.get('/hello', (req, res) => {
+    res.send('World!');
+});
 let server: http.Server | https.Server;
 
 //initialize a simple http server
@@ -29,13 +33,12 @@ wss.on('connection', (ws: WebSocket) => {
         let data: JoystickOutputData;
         try {
             data = JSON.parse(message);
+            //log the received message and send it back to the client
+            console.log(data.angle.degree+' => '+data.force);
         } catch (e) {
             console.error(e);
-            return;
         }
 
-        //log the received message and send it back to the client
-        console.log(data.angle.degree+' => '+(data as JoystickOutputData).force);
         // ws.send(message);
         wss.clients
             .forEach(client => {
