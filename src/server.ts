@@ -26,9 +26,16 @@ wss.on('connection', (ws: WebSocket) => {
 
     //connection is up, let's add a simple simple event
     ws.on('message', (message: string) => {
-        const data = JSON.parse(message);
+        let data: JoystickOutputData;
+        try {
+            data = JSON.parse(message);
+        } catch (e) {
+            console.error(e);
+            return;
+        }
+
         //log the received message and send it back to the client
-        console.log((data as JoystickOutputData).angle.degree+' => '+(data as JoystickOutputData).force);
+        console.log(data.angle.degree+' => '+(data as JoystickOutputData).force);
         // ws.send(message);
         wss.clients
             .forEach(client => {
