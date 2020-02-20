@@ -29,6 +29,8 @@ for production define variables:
     --config=webpack.server-config.js
 ```
 
+    Note: use update-ssl.sh to copy cert and key with correct access rights
+
 Look at `package.json` to know how it works
 
 Compile frontend:
