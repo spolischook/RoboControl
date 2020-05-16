@@ -26,7 +26,7 @@ for production define variables:
     --define process.env.PORT='3355' 
     --define process.env.CERT='"/path/to/cert.pem"' 
     --define process.env.PRIVATE_KEY='"/path/to/key.pem"' 
-    --config=webpack.server-config.js
+    --config=webpack.server.js
 ```
 
     Note: use update-ssl.sh to copy cert and key with correct access rights
