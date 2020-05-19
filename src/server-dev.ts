@@ -6,8 +6,8 @@ import {JoystickOutputData} from 'nipplejs';
 
 const app = express();
 let server: http.Server;
-
 server = http.createServer(app);
+
 const wss = new WebSocket.Server({ server });
 
 wss.on('connection', (ws: WebSocket) => {
@@ -18,6 +18,7 @@ wss.on('connection', (ws: WebSocket) => {
             console.log(data.angle.degree+' => '+data.force);
         } catch (e) {
             console.error(e);
+            return;
         }
 
         wss.clients
@@ -30,6 +31,7 @@ wss.on('connection', (ws: WebSocket) => {
 });
 
 //start our server
-server.listen(process.env.PORT || 8999, () => {
-    console.log(`Server started on port ${(server.address() as AddressInfo).port} :)`);
+const PORT = 8999;
+server.listen(PORT, () => {
+    console.log(`Server started on ${PORT} port`);
 });
