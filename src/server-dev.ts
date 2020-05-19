@@ -22,7 +22,7 @@ wss.on('connection', (ws: WebSocket) => {
         }
 
         wss.clients
-            .forEach(client => {
+            .forEach((client: WebSocket) => {
                 if (client != ws) {
                     client.send(message);
                 }
