@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "./node_modules/.bin/webpack --config=webpack.server.js && node ./dist/server.js",
-    "server-dev": "./node_modules/.bin/webpack --config=webpack.server-dev.js && node ./dist/server-dev.js"
+    "server-dev": "./node_modules/.bin/webpack --config=webpack.server-dev.js && node ./dist/server-dev.js",
+    "ping-pong": "./node_modules/.bin/webpack --config=webpack.pingPong.js && node ./dist/pingPongServer.js"
   },
   "author": {
     "name": "Serhii Polishchuk",
