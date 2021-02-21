@@ -1,19 +1,12 @@
 import * as express from 'express';
-import * as https from 'https';
+import * as http from 'http';
 import * as WebSocket from 'ws';
 import {AddressInfo} from "net";
 import {JoystickOutputData} from 'nipplejs';
-import fs = require('fs');
 
 const app = express();
-let server: https.Server;
-
-const keyPath = process.env.PRIVATE_KEY || '';
-const certPath = process.env.CERT || '';
-const privateKey = fs.readFileSync(keyPath, 'utf8');
-const certificate = fs.readFileSync(certPath, 'utf8');
-const credentials = { key: privateKey, cert: certificate };
-server = https.createServer(credentials, app);
+let server: http.Server;
+server = http.createServer(app);
 
 const wss = new WebSocket.Server({ server });
 
@@ -25,10 +18,11 @@ wss.on('connection', (ws: WebSocket) => {
             console.log(data.angle.degree+' => '+data.force);
         } catch (e) {
             console.error(e);
+            return;
         }
 
         wss.clients
-            .forEach(client => {
+            .forEach((client: WebSocket) => {
                 if (client != ws) {
                     client.send(message);
                 }
@@ -37,6 +31,7 @@ wss.on('connection', (ws: WebSocket) => {
 });
 
 //start our server
-server.listen(process.env.PORT, () => {
-    console.log(`Server started on port ${(server.address() as AddressInfo).port} :)`);
+const PORT = 8999;
+server.listen(PORT, () => {
+    console.log(`Server started on ${PORT} port`);
 });
