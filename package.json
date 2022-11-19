@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.28.2",
+    "@symfony/webpack-encore": "^4.1.1",
     "@types/express": "^4.17.2",
     "@types/ws": "^7.2.0",
     "express": "^4.17.1",
